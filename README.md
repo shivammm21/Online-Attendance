@@ -11,6 +11,8 @@ and students. The system allows teachers to generate a
 secure 4-digit OTP (One-Time Password) that students can 
 use to mark their attendance.</p>
 
+<img src="Screenshot/index.png">
+
 <h2>Features</h2>
 1. OTP-Based Attendance:
 <ul>
