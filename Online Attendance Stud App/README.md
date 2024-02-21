@@ -27,6 +27,8 @@
     <li>After successful login, you will be prompted to enter the OTP (One-Time Password) shared by your teacher for the current class session.</li>
 </ul>
 
+<img src="Screenshot/loginpage.jpeg" height="500px">
+
 <h3>Marking Attendance</h3>
 
 1. Enter OTP:
@@ -40,6 +42,7 @@
     <li>After entering the correct OTP, click on the "Present" button to mark your attendance for the current class session.</li>
 </ul>
 
+<img src="Screenshot/homepage.jpeg" height="500px">
 <h2>Important Notes</h2>
 
 * Ensure that you enter the correct Roll Number and Password to log in successfully.
