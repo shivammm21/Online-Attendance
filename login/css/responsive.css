@@ -1,0 +1,305 @@
+@media (max-width: 1199px) {
+  /* Program Benefits */
+  .row_program .center {
+    margin-top: 8%;
+  }
+
+  /* site_footer */
+  .footer_row .f_box_md {
+    width: 100%;
+    border-right: none;
+    padding-right: 0;
+    padding-bottom: 30px;
+  }
+  .footer_row .f_box_sm {
+    max-width: 200px;
+    width: 25%;
+    margin-left: 0;
+    padding: 16px 0;
+  }
+}
+
+@media (max-width: 991px) {
+  .flex_md_column_reverse {
+    flex-direction: column-reverse;
+  }
+  .br_md_none br {
+    display: none;
+  }
+  .companies_grid_wrapper {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .course_description_box {
+    max-height: 100%;
+  }
+
+  /* Program Benefits */
+  .row_program .left,
+  .row_program .right {
+    flex: 1;
+  }
+  .row_program .center {
+    width: 30% !important;
+  }
+  .row_program .center .circle {
+    transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    -o-transform: scale(1.1);
+  }
+}
+
+@media (max-width: 800px) {
+  /* reviews_slider */
+  .reviews_slider .brand_logo {
+    height: 30px;
+  }
+}
+
+@media (max-width: 767px) {
+    .mediaLinks {
+        padding: 0 !important;
+      }
+    
+      .mediaLinks .row {
+        flex-direction: row !important;
+        align-items: flex-start !important;
+      }
+      .mediaLinks .row div {
+        width: 30%;
+      }
+      .mediaLinks img {
+        width: 7rem;
+      }
+  .grid_item > img {
+    height: 26px;
+  }
+
+  /* Header */
+  #offcanvas {
+    background: var(--navy_blue);
+  }
+  .nav_ul {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .nav_ul li {
+    margin-bottom: 20px;
+    margin-right: 0;
+  }
+  .nav_ul,
+  .nav_ul li,
+  .nav_ul li a {
+    width: 100%;
+    text-align: center;
+  }
+  .nav_ul li a::after {
+    display: none;
+  }
+
+  /* Program Benefits */
+  .row_program .box_top {
+    transform: translateX(0) !important;
+    -webkit-transform: translateX(0) !important;
+    -moz-transform: translateX(0) !important;
+    -ms-transform: translateX(0) !important;
+    -o-transform: translateX(0) !important;
+  }
+  .row_program .center {
+    display: none;
+  }
+  .row_program .box {
+    margin-bottom: 0 !important;
+    min-height: 220px;
+    padding-bottom: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  /* Program Benefits */
+  .row_program {
+    flex-wrap: wrap;
+  }
+  .row_program .left,
+  .row_program .right,
+  .row_program .col-8 {
+    width: 100%;
+    flex: none;
+  }
+  .row_program .box h5,
+  .row_program .box p {
+    text-align: center !important;
+  }
+  .row_program .box {
+    min-height: unset;
+    padding-bottom: 20px;
+  }
+  .reviews_slider .bottom {
+    padding-top: 2rem;
+  }
+
+  /* site_footer */
+  .footer_row .f_box_sm {
+    max-width: unset;
+    width: 50%;
+  }
+  .footer_row .f_box_sm.f_box_sm_2,
+  .footer_row .f_box_sm.f_box_sm_4 {
+    display: flex;
+    justify-content: center;
+  }
+  .footer_top {
+    padding-bottom: 1rem !important;
+  }
+}
+
+@media (max-width: 650px) {
+  /* slider-reviews */
+  .mediaLinks {
+    padding: 0 !important;
+  }
+
+  .mediaLinks .row {
+    flex-direction: row !important;
+    align-items: flex-start !important;
+  }
+  .mediaLinks .row div {
+    width: 30%;
+  }
+  .mediaLinks img {
+    width: 7rem;
+  }
+  .slider_container {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}
+
+@media (max-width: 576px) {
+    .mediaLinks {
+        padding: 0 !important;
+      }
+    
+      .mediaLinks .row {
+        flex-direction: row !important;
+        align-items: flex-start !important;
+      }
+      .mediaLinks .row div {
+        width: 30%;
+      }
+      .mediaLinks img {
+        width: 6rem;
+      }
+  /* reviews_slider */
+  .reviews_slider .user_details .left h6,
+  .reviews_slider .user_details .left p {
+    font-size: 14px;
+  }
+  .reviews_slider .brand_logo {
+    height: 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .mediaLinks {
+    padding: 0 !important;
+  }
+
+  .mediaLinks .row {
+    flex-direction: row !important;
+    align-items: flex-start !important;
+  }
+  .mediaLinks .row div {
+    width: 30%;
+  }
+  .mediaLinks .media_link {
+    text-decoration: none;
+    font-size: 1rem !important;
+    font-weight: bold;
+    width: 5rem;
+    text-align: center;
+  }
+  .mediaLinks img {
+    width: 5rem;
+  }
+  /* reviews_slider */
+  .reviews_slider .reviews_arrow {
+    width: 16% !important;
+    transform: translateY(-12%);
+    -webkit-transform: translateY(-12%);
+    -moz-transform: translateY(-12%);
+    -ms-transform: translateY(-12%);
+    -o-transform: translateY(-12%);
+  }
+  .reviews_circle {
+    width: 10%;
+    bottom: 16%;
+  }
+  .reviews_slider .user_details .right img {
+    width: 50px;
+  }
+  .reviews_slider .swiper-slide .inner_box {
+    padding: 20px;
+  }
+  .reviews_slider .brand_logo {
+    height: 24px;
+  }
+}
+
+@media (max-width: 440px) {
+  /* reviews_slider */
+  .reviews_slider .inner_box > p {
+    font-size: 14px;
+  }
+  .reviews_slider .user_details .left h6,
+  .reviews_slider .user_details .left p {
+    font-size: 12px;
+  }
+  .reviews_slider .reviews_arrow {
+    width: 16% !important;
+  }
+  .reviews_circle {
+    width: 10%;
+    bottom: 16%;
+  }
+  .reviews_slider .user_details .right img {
+    width: 40px;
+  }
+  .reviews_slider .reviews_arrow {
+    margin-left: -1%;
+  }
+}
+
+@media (max-width: 380px) {
+  /* reviews_slider */
+  .reviews_slider .swiper-slide .inner_box {
+    padding: 15px;
+  }
+  .reviews_slider .user_details .left h6,
+  .reviews_slider .user_details .left p {
+    font-size: 10px;
+  }
+  .reviews_slider .user_details .left {
+    padding-right: 8px;
+  }
+  .reviews_slider .reviews_arrow {
+    width: 16% !important;
+  }
+  .reviews_circle {
+    width: 8%;
+    bottom: 40px;
+  }
+  .reviews_slider .user_details .right img {
+    width: 35px;
+  }
+  .reviews_slider .reviews_arrow {
+    width: 12% !important;
+    margin-left: -1%;
+    transform: translateY(-40%);
+    -webkit-transform: translateY(-40%);
+    -moz-transform: translateY(-40%);
+    -ms-transform: translateY(-40%);
+    -o-transform: translateY(-40%);
+  }
+}

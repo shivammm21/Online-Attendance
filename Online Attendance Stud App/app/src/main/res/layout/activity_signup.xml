@@ -1,0 +1,87 @@
+<!-- res/layout/activity_signup.xml -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardViewLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_margin="20dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="8dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+    <TextView
+        android:id="@+id/textViewSignUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:text="Sign Up"
+        android:textSize="24sp" />
+
+    <EditText
+        android:id="@+id/editTextRollNoSignUp"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:hint="Roll No"
+        android:layout_below="@+id/textViewSignUp"
+        android:layout_marginTop="20dp"
+        android:paddingLeft="20dp"
+        android:layout_marginHorizontal="20dp"
+        android:background="@drawable/rounded_edittext_bg"/>
+
+    <EditText
+        android:id="@+id/editTextName"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:hint="Name"
+        android:layout_below="@+id/editTextRollNoSignUp"
+        android:layout_marginTop="20dp"
+        android:paddingLeft="20dp"
+        android:layout_marginHorizontal="20dp"
+        android:background="@drawable/rounded_edittext_bg"/>
+
+    <EditText
+        android:id="@+id/editTextPasswordSignUp"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:hint="Password"
+        android:layout_below="@+id/editTextName"
+        android:layout_marginTop="20dp"
+        android:paddingLeft="20dp"
+        android:layout_marginHorizontal="20dp"
+        android:inputType="textPassword"
+        android:background="@drawable/rounded_edittext_bg"/>
+
+    <Button
+        android:id="@+id/buttonSignUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign Up"
+        android:layout_below="@+id/editTextPasswordSignUp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:layout_marginHorizontal="20dp"/>
+
+
+    <TextView
+        android:id="@+id/textViewLoginFromSignUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Already have an account? Login"
+        android:layout_below="@+id/buttonSignUp"
+        android:layout_marginTop="30dp"
+        android:layout_centerHorizontal="true"
+        android:textColor="#0000FF"/>
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>
