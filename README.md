@@ -41,7 +41,7 @@ students at any time, providing a convenient way to manage attendance records.</
     <li>We have developed a mobile app for students, enabling them to easily and 
 quickly enter the OTP from their smartphones.</li>
 </ul>
-
+<img src="Screenshot/login.png">
 <h2>How It Works</h2>
 
 <li><b>Teacher Side:</b></li>
