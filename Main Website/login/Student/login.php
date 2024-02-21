@@ -44,7 +44,7 @@
 
                                     if (response.trim() === "success") {
                                         // Redirect to index.php and pass username as a parameter
-                                        window.location.href = "index.php?username=" + username;
+                                        window.location.href = "index.php";
                                     } else {
                                         var errorMessage = document.createElement("p");
                                         errorMessage.innerHTML = "Wrong username or password";

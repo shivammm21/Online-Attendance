@@ -1,6 +1,6 @@
 <?php
 // Get username and password from the POST request
-
+session_start();
 $servername = "localhost";
 $username1 = "nxwilozu_pvgcoe";
 $password1 = "College@123";
@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $studentName = $row['studentName'];
 
 // Check the credentials (replace this with your actual logic)
-
+$_SESSION['username'] = $username;
     echo 'success';
 } else {
     echo 'error';

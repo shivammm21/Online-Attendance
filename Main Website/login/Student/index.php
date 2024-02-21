@@ -1,4 +1,11 @@
+<?php
+session_start();
 
+// Check if the user is logged in
+
+// Access the username
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -88,7 +95,7 @@ $conn = new mysqli($servername, $username1, $password,$databaseName);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-     $rollno = $_GET['username'];
+     $rollno = $_SESSION['username'];
 
             $sql = "SELECT * FROM allStudent WHERE rollno='$rollno'";
             $result = $conn->query($sql);

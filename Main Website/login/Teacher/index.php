@@ -1,4 +1,13 @@
 
+<?php
+session_start();
+
+// Check if the user is logged in
+
+// Access the username
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,7 +44,7 @@ $conn = new mysqli($servername, $username1, $password,$databaseName);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-     $tearcherUser = $_GET['username'];
+     $tearcherUser = $_SESSION['username'];
 
             $sql = "SELECT * FROM allTeacher WHERE username='$tearcherUser'";
             $result = $conn->query($sql);
@@ -65,7 +74,7 @@ if ($conn->connect_error) {
            
             <?php
     // PHP variable for the database name
-    $dbName = $_GET['username'];
+    $dbName = $_SESSION['username'];
     ?>
              
 
@@ -105,7 +114,7 @@ if ($conn->connect_error) {
 
                           <?php
     // PHP variable for the database name
-    $dbName = $_GET['username'];
+    $dbName = $_SESSION['username'];
     ?>
                         <script>
                           let timer;
@@ -182,7 +191,7 @@ $conn = new mysqli($servername, $username1, $password,$databaseName);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-     $tearcherUser = $_GET['username'].'d';
+     $tearcherUser = $_SESSION['username'].'d';
 
                 $sql3 = "SELECT COUNT(*) as total_rows FROM $tearcherUser";
                 $result2 = $conn->query($sql3);
@@ -202,7 +211,7 @@ if ($conn->connect_error) {
                     <?php 
                   error_reporting(E_ALL);
                   ini_set('display_errors', 1);
-                  $dbUser = $_GET['username'];
+                  $dbUser = $_SESSION['username'];
                   include 'generatepdf/submit.php';
 
                   $pdfFilename = $dbUser . '.pdf';

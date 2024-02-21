@@ -29,33 +29,47 @@
             <input type="button" value="Login" class="btn solid" onclick="checkCredentials()" />
                     <script>
                         function checkCredentials() {
-                          var username = document.querySelector(".sign-in-form input[name='username']").value;
-                          var password = document.querySelector(".sign-in-form input[name='passwords']").value;
+    var username = document.querySelector(".sign-in-form input[name='username']").value;
+    var password = document.querySelector(".sign-in-form input[name='passwords']").value;
 
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "check_credentials.php", true);
 
-                            var xhr = new XMLHttpRequest();
-                            xhr.open("POST", "check_credentials.php", true);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4) {
+            if (xhr.status == 200) {
+                var response = xhr.responseText;
 
-                            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                            xhr.onreadystatechange = function () {
-                                if (xhr.readyState == 4 && xhr.status == 200) {
-                                    var response = xhr.responseText;
+                if (response.trim() === "success") {
+                    // Redirect to index.php and pass username as a parameter
+                    window.location.href = "index.php";
+                } else {
+                    handleLoginError("Wrong username or password");
+                }
+            } else {
+                handleLoginError("Error communicating with the server");
+            }
+        }
+    };
 
-                                    if (response.trim() === "success") {
-                                        // Redirect to index.php and pass username as a parameter
-                                        window.location.href = "index.php?username=" + username;
-                                    } else {
-                                        var errorMessage = document.createElement("p");
-                                        errorMessage.innerHTML = "Wrong username or password";
-                                        errorMessage.style.color = "red";
-                                        document.querySelector(".sign-in-form").appendChild(errorMessage);
-                                    }
-                                }
-                            };
+    // Send both username and password in the request
+    xhr.send("username=" + encodeURIComponent(username) + "&password=" + encodeURIComponent(password));
+}
 
-                            // Send both username and password in the request
-                            xhr.send("username=" + username + "&password=" + password);
-                        }
+function handleLoginError(errorMessage) {
+    var errorElement = document.querySelector(".error-message");
+
+    if (!errorElement) {
+        errorElement = document.createElement("p");
+        errorElement.className = "error-message";
+        errorElement.style.color = "red";
+        document.querySelector(".sign-in-form").appendChild(errorElement);
+    }
+
+    errorElement.innerHTML = errorMessage;
+}
+
                     </script>
           </form>
           

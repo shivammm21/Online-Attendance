@@ -1,5 +1,8 @@
 <?php
-// Get username and password from the POST request
+session_start();
+
+error_reporting(E_ALL);
+ini_set('display_errors', 'On');
 
 $servername = "localhost";
 $username1 = "nxwilozu_pvgcoe";
@@ -14,28 +17,35 @@ if ($conn->connect_error) {
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Get user input
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+    if (isset($_POST['username']) && isset($_POST['password'])) {
+        $username = mysqli_real_escape_string($conn, $_POST['username']);
+        $password = mysqli_real_escape_string($conn, $_POST['password']);
 
-    // Sanitize user input to prevent SQL injection
-    $rollno1 = mysqli_real_escape_string($conn, $username);
-    $passwords = mysqli_real_escape_string($conn, $password);
+        // Query to check if username and password match
+        $sql = "SELECT * FROM $username WHERE passwords = '$password'";
+        $result = $conn->query($sql);
 
-   
-
-    // Query to check if roll number and password match
-    $sql = "SELECT * FROM $username WHERE passwords = '$password'";
-    $result = $conn->query($sql);
-
-    if ($result->num_rows > 0) {
-        //$row = $result->fetch_assoc();
-        //$studentName = $row['studentName'];
-
-// Check the credentials (replace this with your actual logic)
-
-    echo 'success';
+        if ($result) {
+            if ($result->num_rows > 0) {
+                // Credentials are correct, set the session variable
+                $_SESSION['username'] = $username;
+                echo 'success';
+            } else {
+                // Incorrect credentials
+                echo 'failure';
+            }
+        } else {
+            // Query execution failed
+            echo 'query_failure';
+        }
+    } else {
+        // Invalid POST data
+        echo 'invalid_post_data';
+    }
 } else {
-    echo 'error';
+    // If not a POST request, handle accordingly (e.g., redirect to login page)
+    echo 'Invalid request method';
 }
-}
+
+$conn->close();
 ?>
