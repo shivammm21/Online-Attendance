@@ -54,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 
-$sqlteacherInsert = "INSERT INTO allTeacher (otp,teacherName,username) VALUES (123,'$teacherName','$tableName')";
+$sqlteacherInsert = "INSERT INTO allTeacher (otp,teacherName,username) VALUES (765 ,'$teacherName','$tableName')";
 
 if ($conn->query($sqlteacherInsert) === TRUE) {
     //$error_message = "Data Inserted Successful";

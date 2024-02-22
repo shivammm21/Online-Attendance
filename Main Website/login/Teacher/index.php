@@ -151,7 +151,7 @@ if ($conn->connect_error) {
 
         function performAction(dbName) {
             // Your action logic goes here
-            var randomNo1 = 123;
+            var randomNo1 = 214;
 
             // Make a fetch request to the PHP script to update the number
             location.reload();
