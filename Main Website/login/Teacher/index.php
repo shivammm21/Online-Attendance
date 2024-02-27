@@ -174,17 +174,17 @@ function generateAndSend(dbName) {
         function performAction(dbName) {
     // Your action logic goes here
     var randomNo1 = 123;
-    var subject = "abc";  // Set your desired subject here
+    //var subject = "abc";  // Set your desired subject here
 
     // Make a fetch request to the PHP script to update the number and subject
     location.reload();
     var db = dbName;
-    fetch('update.php?dbName=' + db, {
+    fetch('updateOTP.php?dbName=' + db, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
         },
-        body: 'randomNo=' + randomNo1 + '&subject=' + encodeURIComponent(subject),
+        body: 'randomNo=' + randomNo1,
     })
     .then(response => response.text())
     .then(data => {
@@ -221,6 +221,8 @@ if ($conn->connect_error) {
                 if ($result2->num_rows > 0) {
                     // Fetch the result as an associative array
                     $row = $result2->fetch_assoc();
+
+                    $totalStud = $row["total_rows"];
                     
                     // Print the total number of rows
                     echo "Present Student " . $row["total_rows"];
@@ -234,6 +236,8 @@ if ($conn->connect_error) {
                   error_reporting(E_ALL);
                   ini_set('display_errors', 1);
                   $dbUser = $_GET['username'];
+                 
+                  //$sub = $_POST["subject"];
                   include 'generatepdf/submit.php';
 
                   $pdfFilename = $dbUser . '.pdf';
