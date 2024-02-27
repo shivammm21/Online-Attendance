@@ -92,7 +92,7 @@ public class StudentDashActivity extends AppCompatActivity {
                 String enteredOTP = editTextOTP.getText().toString();
 
                 // You may need to replace the URL with the correct path to your PHP script
-                String validateOTPEndpoint = "http://192.168.11.81/website/login/appCheck.php";
+                String validateOTPEndpoint = "http://192.168.82.81/website/login/appCheck.php";
 
                 new ValidateOTPTask().execute(enteredOTP, validateOTPEndpoint);
             }

@@ -12,7 +12,7 @@ public class NameRetrieval {
     public static String retrieveName(String rollNo) {
         String result = "";
         try {
-            URL url = new URL("http://192.168.11.81/website/login/appStudName.php");
+            URL url = new URL("http://192.168.82.81/website/login/appStudName.php");
             HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
 
             try {

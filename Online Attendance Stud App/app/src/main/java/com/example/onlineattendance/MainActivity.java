@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
             String password = params[1];
 
             try {
-                URL url = new URL("http://192.168.11.81/website/login/appConn.php");
+                URL url = new URL("http://192.168.82.81/website/login/appConn.php");
                 HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
 
                 try {
@@ -134,7 +134,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void openLink(View view) {
-        String url = "http://192.168.11.81/website/login/Student/login.php";  // Replace with your desired URL
+        String url = "http://192.168.82.81/website/login/Student/login.php";  // Replace with your desired URL
         Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setData(Uri.parse(url));
         startActivity(intent);
