@@ -37,11 +37,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $email = $_POST['email'];
             $passwords = $_POST['passwords'];
             $tearcherSub = $_POST['teacherSub'];
+            $tearcherSub1 = $_POST['teacherSub1'];
     
             // Insert a record with '1234' in the 'otp' column
             $sqlInsertData = "INSERT INTO $tableName (teacherName,teacherSub,email,passwords) VALUES ('$teacherName','$tearcherSub','$email','$passwords')";
+            $sqlInsertData1 = "INSERT INTO $tableName (teacherName,teacherSub,email,passwords) VALUES ('','$tearcherSub1','','')";
     
-            if ($conn->query($sqlInsertData) === TRUE) {
+            if ($conn->query($sqlInsertData) === TRUE && $conn->query($sqlInsertData1) === TRUE) {
                 echo 'success';
             } else {
                 echo 'error';
@@ -54,7 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 
-$sqlteacherInsert = "INSERT INTO allTeacher (otp,teacherName,username) VALUES (765 ,'$teacherName','$tableName')";
+$sqlteacherInsert = "INSERT INTO allTeacher (otp,teacherName,username,teacherSub) VALUES (123,'$teacherName','$tableName','abc')";
 
 if ($conn->query($sqlteacherInsert) === TRUE) {
     //$error_message = "Data Inserted Successful";

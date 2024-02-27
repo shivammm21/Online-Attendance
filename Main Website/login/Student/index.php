@@ -1,12 +1,10 @@
 <?php
 session_start();
 
-// Check if the user is logged in
 
-// Access the username
 
 ?>
-<!DOCTYPE html>
+
 <html lang="en">
 
 <head>
@@ -219,6 +217,7 @@ if ($conn->connect_error) {
                 if ($result->num_rows > 0) {
                     $row = $result->fetch_assoc();
                     $storedOTP = $row['otp'];
+                    $teach = $row['username'];
                     $teacherName = $row['username'].'d';
                     $storeDB = $row['username'];
    
@@ -241,7 +240,10 @@ if ($conn->connect_error) {
                        
                         <img class="img-tick green-tick-div" src="Tick-icon.jpg" alt="not found">
                         <h3 style="color: green"><?php
-                            $printsub = "SELECT * FROM $storeDB WHERE 1";
+                            
+                            //$teach = $_POST['username'];
+
+                            $printsub = "SELECT teacherSub FROM allTeacher WHERE username = '$teach'";
                             $result1 = $conn->query($printsub);
                             if($result->num_rows>0){
                                 $row1 = $result1->fetch_assoc();

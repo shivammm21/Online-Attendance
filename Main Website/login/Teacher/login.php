@@ -43,7 +43,7 @@
 
                 if (response.trim() === "success") {
                     // Redirect to index.php and pass username as a parameter
-                    window.location.href = "index.php";
+                    window.location.href = "index.php?username=" + username;
                 } else {
                     handleLoginError("Wrong username or password");
                 }
@@ -93,6 +93,10 @@ function handleLoginError(errorMessage) {
               <input type="text" for = "teacherSub" id="teacherSub" name="teacherSub" placeholder="Subject" required/>
             </div>
             <div class="input-field">
+              <i class="fas fa-envelope"></i>
+              <input type="text" for = "teacherSub1" id="teacherSub1" name="teacherSub1" placeholder="One More Subject(Optional)"/>
+            </div>
+            <div class="input-field">
               <i class="fas fa-lock"></i>
               <input type="password" pfor = "passwords" id="passwords" name="passwords" placeholder="Create Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required />
             </div>
@@ -105,6 +109,7 @@ function handleLoginError(errorMessage) {
         var username = document.querySelector(".sign-up-form input[name='username']").value;
         var email = document.querySelector(".sign-up-form input[name='email']").value;
         var teacherSub = document.querySelector(".sign-up-form input[name='teacherSub']").value;
+        var teacherSub1 = document.querySelector(".sign-up-form input[name='teacherSub1']").value;
         var passwords = document.querySelector(".sign-up-form input[name='passwords']").value;
 
         var xhr1 = new XMLHttpRequest();
@@ -135,7 +140,7 @@ function handleLoginError(errorMessage) {
         };
 
         // Send both username and password in the request
-        xhr1.send("teacherName=" + teacherName + "&username=" + username + "&email=" + email + "&teacherSub=" + teacherSub + "&passwords=" + passwords);
+        xhr1.send("teacherName=" + teacherName + "&username=" + username + "&email=" + email + "&teacherSub=" + teacherSub + "&teacherSub1=" + teacherSub1 + "&passwords=" + passwords);
 
     }
 </script>

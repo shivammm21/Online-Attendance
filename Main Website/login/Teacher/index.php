@@ -1,12 +1,4 @@
 
-<?php
-session_start();
-
-// Check if the user is logged in
-
-// Access the username
-
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -44,7 +36,7 @@ $conn = new mysqli($servername, $username1, $password,$databaseName);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-     $tearcherUser = $_SESSION['username'];
+     $tearcherUser = $_GET['username'];
 
             $sql = "SELECT * FROM allTeacher WHERE username='$tearcherUser'";
             $result = $conn->query($sql);
@@ -74,39 +66,69 @@ if ($conn->connect_error) {
            
             <?php
     // PHP variable for the database name
-    $dbName = $_SESSION['username'];
+    $dbName = $_GET['username'];
     ?>
              
 
                 <div style="margin-top: 50px;">
+
                 <header style="color: green; font-size:300%;" id="generatedOtp"></header><br>
+                <select id="subject" name="subject" style="border-radius: 8px; height:40px; width:200px;">
+        <?php
+            // Connect to your MySQL database
+            $mysqli = new mysqli("localhost", "nxwilozu_pvgcoe", "College@123", "nxwilozu_pvgcoe");
+
+            // Check connection
+            if ($mysqli->connect_error) {
+                die("Connection failed: " . $mysqli->connect_error);
+            }
+
+            // Fetch data from the database
+            $result = $mysqli->query("SELECT teacherSub FROM $dbName");
+
+            // Loop through the result set and populate the combo box
+            while ($row = $result->fetch_assoc()) {
+                echo "<option value='" . $row['teacherSub'] . "'>" . $row['teacherSub'] . "</option>";
+            }
+
+            // Close the connection
+            $mysqli->close();
+        ?>
+<?php
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        // Get the selected value from the combo box
+        $selectedValue = $_POST["subject"];
+    }
+?>
+    </select><br>
                 <button onclick="generateAndSend('<?php echo $dbName; ?>'); startTimerAndPerformAction('<?php echo $dbName; ?>');" >Generate OTP</button>
                 <script>
-        function generateAndSend(dbName) {
-            // Generate a random 4-digit number
-            var randomNo = Math.floor(1000 + Math.random() * 9000);
+function generateAndSend(dbName) {
+    // Generate a random 4-digit number
+    var randomNo = Math.floor(1000 + Math.random() * 9000);
 
-            // Make a fetch request to the PHP script to update the number
-            fetch('update.php?dbName=' + dbName, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                },
-                body: 'randomNo=' + randomNo,
-            })
-            .then(response => response.text())
-            .then(data => {
-                console.log(data);
-                // Update the HTML content with the generated OTP
-                document.getElementById('generatedOtp').innerText =  randomNo;
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
+    // Get the selected value from the combo box
+    var selectedOption = document.getElementById("subject").value;
 
-            
-        }
-    </script>
+    // Make a fetch request to the PHP script to update the number and subject
+    fetch('update.php?dbName=' + dbName, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: 'randomNo=' + randomNo + '&subject=' + encodeURIComponent(selectedOption),
+    })
+    .then(response => response.text())
+    .then(data => {
+        console.log(data);
+        // Update the HTML content with the generated OTP
+        document.getElementById('generatedOtp').innerText = randomNo;
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}
+</script>
                    
                     <div style="text-align: center;">
                         
@@ -114,7 +136,7 @@ if ($conn->connect_error) {
 
                           <?php
     // PHP variable for the database name
-    $dbName = $_SESSION['username'];
+    $dbName = $_GET['username'];
     ?>
                         <script>
                           let timer;
@@ -150,29 +172,29 @@ if ($conn->connect_error) {
         }
 
         function performAction(dbName) {
-            // Your action logic goes here
-            var randomNo1 = 214;
+    // Your action logic goes here
+    var randomNo1 = 123;
+    var subject = "abc";  // Set your desired subject here
 
-            // Make a fetch request to the PHP script to update the number
-            location.reload();
-            var db = dbName;
-            fetch('update.php?dbName=' + db, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                },
-                body: 'randomNo=' + randomNo1,
-            })
-            .then(response => response.text())
-            .then(data => {
-                console.log(data);
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
+    // Make a fetch request to the PHP script to update the number and subject
+    location.reload();
+    var db = dbName;
+    fetch('update.php?dbName=' + db, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: 'randomNo=' + randomNo1 + '&subject=' + encodeURIComponent(subject),
+    })
+    .then(response => response.text())
+    .then(data => {
+        console.log(data);
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}
 
-            
-        }
 </script>
 <h2 style="color:green">
 
@@ -191,7 +213,7 @@ $conn = new mysqli($servername, $username1, $password,$databaseName);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-     $tearcherUser = $_SESSION['username'].'d';
+     $tearcherUser = $_GET['username'].'d';
 
                 $sql3 = "SELECT COUNT(*) as total_rows FROM $tearcherUser";
                 $result2 = $conn->query($sql3);
@@ -211,7 +233,7 @@ if ($conn->connect_error) {
                     <?php 
                   error_reporting(E_ALL);
                   ini_set('display_errors', 1);
-                  $dbUser = $_SESSION['username'];
+                  $dbUser = $_GET['username'];
                   include 'generatepdf/submit.php';
 
                   $pdfFilename = $dbUser . '.pdf';
