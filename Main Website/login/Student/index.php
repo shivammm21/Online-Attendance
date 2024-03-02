@@ -1,4 +1,7 @@
+
 <?php
+
+
 session_start();
 
 
@@ -17,7 +20,13 @@ session_start();
 
     <style>
 
+.redTick{
 
+    display : none;
+
+
+
+}
 .combo {
     padding: 8px;
     font-size: 16px;
@@ -122,7 +131,7 @@ if ($conn->connect_error) {
                 
                 <input type="text" name="otp" onClick="startTimerAndPerformAction()" placeholder="OTP" style="width: auto; height: auto;" >
                 
-                <div><h1 id="timer" style="color: red; font-size: 200%;">00:06</h1></div>
+                <div><h1 id="timer" style="color: red; font-size: 200%;">00:10</h1></div>
 
 <script>
     let timer;
@@ -130,7 +139,7 @@ if ($conn->connect_error) {
     let timerValue;
 
     function startTimer(duration) {
-        timerValue = 6;
+        timerValue = 10;
         updateTimerDisplay();
         timer = setInterval(function () {
             timerValue--;
@@ -155,7 +164,7 @@ if ($conn->connect_error) {
     }
 
     function startTimerAndPerformAction() {
-        timerValue = 6; // Set the timer duration in seconds
+        timerValue = 10; // Set the timer duration in seconds
         startTimer(timerValue);
         
     }
@@ -168,7 +177,7 @@ if ($conn->connect_error) {
                 
                 
                 
-                <button onclick="logout()" type="submit" style="background-color: red;">Log Out</button>
+                
                 <script>
           function logout() {
             // Make a fetch request to the logout.php script
@@ -187,7 +196,9 @@ if ($conn->connect_error) {
         </script>
 
                
-                <button type="submit">Present</button>
+                <button type="submit"">Present</button>
+                
+                <button onclick="logout()" type="submit" style="background-color: red;">Log Out</button>
                 
                 <h1><?php 
                 
@@ -230,27 +241,37 @@ if ($conn->connect_error) {
                         $insertPresnt = "INSERT INTO $teacherName (`rollno`, `studentName`) VALUES ('$rollno','$studentName')";
 
     if ($conn->query($insertPresnt) === TRUE) {
-       
-    } else {
-        
-    }
+        ?>
+        <img class="img-tick green-tick-div" src="Tick-icon.jpg" alt="not found">
+        <h3 style="color: green"><?php
+            
+            //$teach = $_POST['username'];
+
+            $printsub = "SELECT teacherSub FROM allTeacher WHERE username = '$teach'";
+            $result1 = $conn->query($printsub);
+            if($result->num_rows>0){
+                $row1 = $result1->fetch_assoc();
+                //$sub = 
+                echo "You are Present in ".$row1['teacherSub']." Subject";
+            }
+        }
+    
+
+        ?></h3>
+        <?php
+    } 
+}
+else{
+    ?>
+       <img class="img-tick green-tick-div redTick" id="red-tick" src="Wrong-tick.png" alt="not found">
+                        <h3 class="redTick" style="color: red" id="red-tick">Invalid OTP. Please try again.</h3>
+    <?php
+}
 
                         //echo "Valid OTP for teacher: $teacherName";
                         ?>
                        
-                        <img class="img-tick green-tick-div" src="Tick-icon.jpg" alt="not found">
-                        <h3 style="color: green"><?php
-                            
-                            //$teach = $_POST['username'];
-
-                            $printsub = "SELECT teacherSub FROM allTeacher WHERE username = '$teach'";
-                            $result1 = $conn->query($printsub);
-                            if($result->num_rows>0){
-                                $row1 = $result1->fetch_assoc();
-                                //$sub = 
-                                echo "You are Present in ".$row1['teacherSub']." Subject";
-                            }
-                        ?></h3>
+                        
                         
    
                     <?php
@@ -282,36 +303,20 @@ if ($conn->connect_error) {
                        
                       
                     } else {
-                        echo "Error inserting data: " . $conn->error;
+
+                        ?>
+                        //echo "Error inserting data: " . $conn->error;
+                        <img class="img-tick green-tick-div redTick" id="red-tick" src="Wrong-tick.png" alt="not found">
+                        <h3 class="redTick" style="color: red" id="red-tick">Invalid OTP. Please try again.</h3>
+                        <?php
                     }
                    
                 
                 
-                    } else {
-                        ?>
-                        
-                        <img class="img-tick green-tick-div" src="Wrong-tick.png" alt="not found">
-
-                        <div ><h1 id="timer" style="color: red; font-size: 200%;"></h1></div>
-                        <script>
-                            var timer = 2;
-                            setInterval(function() {
-                            timer--;
-                            document.getElementById('timer').innerText = timer;
-                             if (timer === 0) {
-                // Redirect or trigger an AJAX request to update the query
-                             // Replace this with the actual value you want to pass
-                            window.location.href = 'sign.php';
-            }
-        }, 1000);
-    </script>
-   
-
-                    <?php
-                    }
-                } else {
+                    
+               // } else {
                     //echo 'incorrect';
-                }
+               // }
                 
                 // Close the database connection
                 $conn->close();
@@ -325,7 +330,7 @@ if ($conn->connect_error) {
       
     </div>
    
-    <script src="js/script.js"></script>
+    
 </body>
 
 </html>

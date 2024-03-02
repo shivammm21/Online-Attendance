@@ -22,7 +22,7 @@ if ($conn->connect_error) {
 $newtable = $dbUser.'d';
 $result = $conn->query("SELECT * FROM $newtable ORDER BY rollno ASC");
 
-$sql = "SELECT * FROM allTeacher";
+$sql = "SELECT * FROM allTeacher WHERE username= '$dbUser'";
 
 $result2 = $conn->query($sql);
                 
@@ -55,7 +55,8 @@ $time = $currentDateTime->format('h:i:s A');
 
 // Add PVG COE heading
 $pdf->SetFont('helvetica', 'B', 16);
-$pdf->Cell(0, 10, 'PUNE VIDYARTHI GRIHA\'S ATTENDANCE', 0, 1, 'C');
+$pdf->Cell(0, 10, 'PUNE VIDYARTHI GRIHA\'S COLLEGE OF ENGINEERING NASHIK', 0, 1, 'C');
+$pdf->Cell(0, 10, 'ONLINE ATTENDANCE', 0, 1, 'C');
 $pdf->SetFont('times', '',14);
 $pdf->Cell(0, 10, 'Date : ' . $date, 0, 1, 'L');
 $pdf->Cell(0, 10, 'Time : ' . $time, 0, 1, 'L');
